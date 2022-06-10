@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.13.RELEASE</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>cn.cpoet</groupId>
+  <artifactId>mt-boot</artifactId>
+  <version>${project.version}</version>
+  <modules>
+    <module>mt-model</module>
+    <module>mt-core</module>
+    <module>mt-api</module>
+    <module>mt-web</module>
+  </modules>
+  <packaging>pom</packaging>
+
+  <properties>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+    <!-- ebean -->
+    <ebean.version>12.15.0</ebean.version>
+    <ebean-annotation.version>7.6</ebean-annotation.version>
+    <persistence-api.version>2.2.5</persistence-api.version>
+    <tiles-maven-plugin.version>2.19</tiles-maven-plugin.version>
+    <!-- project version -->
+    <project.version>1.0-SNAPSHOT</project.version>
+    <!-- spring-cloud-alibaba -->
+    <spring-cloud-alibaba-dependencies.version>2.2.7.RELEASE</spring-cloud-alibaba-dependencies.version>
+    <!-- open-api -->
+    <springdoc-openapi-webmvc-core.version>1.6.8</springdoc-openapi-webmvc-core.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba-dependencies.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- mt内部 -->
+      <dependency>
+        <groupId>cn.cpoet</groupId>
+        <artifactId>mt-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-webmvc-core</artifactId>
+      <version>${springdoc-openapi-webmvc-core.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>alicentral</id>
+      <name>alicentral</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </repository>
+
+    <repository>
+      <id>central</id>
+      <name>central</name>
+      <url>https://repo1.maven.org/maven2/</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <!-- 打包时跳过Test -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>io.repaint.maven</groupId>
+          <artifactId>tiles-maven-plugin</artifactId>
+          <version>${tiles-maven-plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
