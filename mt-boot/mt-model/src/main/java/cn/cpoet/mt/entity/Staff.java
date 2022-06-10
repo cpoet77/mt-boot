@@ -11,6 +11,6 @@ import lombok.experimental.FieldNameConstants;
  */
 @Data
 @FieldNameConstants
-public class Staff extends Tenantable {
+public class Staff implements Tenantable {
 
 }

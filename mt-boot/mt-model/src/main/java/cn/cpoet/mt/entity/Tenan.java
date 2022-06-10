@@ -7,5 +7,5 @@ import cn.cpoet.mt.core.tenant.Tenantry;
  *
  * @author CPoet
  */
-public class Tenan extends Tenantry {
+public class Tenan implements Tenantry {
 }
