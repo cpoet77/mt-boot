@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.13.RELEASE</version>
+    <version>2.2.12.RELEASE</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -25,7 +25,6 @@
     <maven.compiler.target>8</maven.compiler.target>
     <!-- ebean -->
     <ebean.version>12.15.0</ebean.version>
-    <ebean-annotation.version>7.6</ebean-annotation.version>
     <persistence-api.version>2.2.5</persistence-api.version>
     <tiles-maven-plugin.version>2.19</tiles-maven-plugin.version>
     <!-- project version -->
@@ -44,6 +43,12 @@
         <version>${spring-cloud-alibaba-dependencies.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.ebean</groupId>
+        <artifactId>ebean</artifactId>
+        <version>${ebean.version}</version>
       </dependency>
 
       <!-- mt内部 -->

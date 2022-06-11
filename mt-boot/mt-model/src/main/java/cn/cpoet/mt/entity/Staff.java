@@ -1,6 +1,6 @@
 package cn.cpoet.mt.entity;
 
-import cn.cpoet.mt.core.tenant.Tenantable;
+import cn.cpoet.mt.entity.base.BaseTenantable;
 import lombok.Data;
 import lombok.experimental.FieldNameConstants;
 
@@ -11,6 +11,5 @@ import lombok.experimental.FieldNameConstants;
  */
 @Data
 @FieldNameConstants
-public class Staff implements Tenantable {
-
+public class Staff extends BaseTenantable {
 }
