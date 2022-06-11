@@ -20,4 +20,19 @@ public interface SystemConst {
      * 游客id
      */
     long GUEST_ID = -2;
+
+    /**
+     * 默认ID生成器名称
+     */
+    String DEFAULT_ID_GRT_NAME = "cn.cpoet.mt#global-id-generator";
+
+    /**
+     * UUID生成器
+     */
+    String UUID_GRT_NAME = "cn.cpoet.mt#uuid-id-generator";
+
+    /**
+     * EBean使用的ID生成器名称
+     */
+    String EBEAN_ID_GRT_NAME = DEFAULT_ID_GRT_NAME;
 }

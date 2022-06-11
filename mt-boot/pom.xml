@@ -16,7 +16,11 @@
     <module>mt-model</module>
     <module>mt-core</module>
     <module>mt-api</module>
+    <module>mt-db</module>
+    <module>mt-single-boot</module>
+    <module>mt-cloud-boot</module>
     <module>mt-web</module>
+    <module>mt-web-single</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -51,10 +55,47 @@
         <version>${ebean.version}</version>
       </dependency>
 
+      <dependency>
+        <groupId>io.ebean</groupId>
+        <artifactId>ebean-test</artifactId>
+        <version>${ebean.version}</version>
+        <scope>test</scope>
+      </dependency>
+
       <!-- mt内部 -->
       <dependency>
         <groupId>cn.cpoet</groupId>
         <artifactId>mt-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.cpoet</groupId>
+        <artifactId>mt-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.cpoet</groupId>
+        <artifactId>mt-db</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.cpoet</groupId>
+        <artifactId>mt-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.cpoet</groupId>
+        <artifactId>mt-single-boot</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>cn.cpoet</groupId>
+        <artifactId>mt-cloud-boot</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
@@ -106,6 +147,8 @@
   </repositories>
 
   <build>
+    <finalName>${artifactId}-${project.version}</finalName>
+
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -132,4 +175,35 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <!-- 环境配置 -->
+  <profiles>
+    <!-- 开发环境 -->
+    <profile>
+      <id>dev</id>
+      <activation>
+        <!--默认激活配置-->
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <profile.name>dev</profile.name>
+      </properties>
+    </profile>
+
+    <!-- 测试环境 -->
+    <profile>
+      <id>test</id>
+      <properties>
+        <profile.name>test</profile.name>
+      </properties>
+    </profile>
+
+    <!-- 生产环境 -->
+    <profile>
+      <id>prod</id>
+      <properties>
+        <profile.name>prod</profile.name>
+      </properties>
+    </profile>
+  </profiles>
 </project>

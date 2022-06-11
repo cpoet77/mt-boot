@@ -16,6 +16,7 @@
     <module>mt-tenant</module>
     <module>mt-comm</module>
     <module>mt-wsocket</module>
+    <module>mt-resource</module>
   </modules>
 
   <artifactId>mt-web</artifactId>
@@ -29,6 +30,17 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>cn.cpoet</groupId>
+      <artifactId>mt-core</artifactId>
+    </dependency>
+
+    <!-- 微服务组件，单体应用（或存在冗杂组件的模块）可排除 -->
+    <dependency>
+      <groupId>cn.cpoet</groupId>
+      <artifactId>mt-cloud-boot</artifactId>
     </dependency>
   </dependencies>
 

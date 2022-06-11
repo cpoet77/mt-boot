@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mt-boot?serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+ebean:
+  ddl:
+    generate: true
+    run: true
+  test:
+    platform: mysql # h2, postgres, mysql, oracle, sqlserver
+    ddlMode: dropCreate # none | dropCreate | migrations | create
+    dbName: mt-boot

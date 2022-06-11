@@ -5,7 +5,14 @@ package cn.cpoet.mt.api.comm;
  *
  * @author CPoet
  */
-public interface IDGenerate<T> {
+public interface IDGenerator<T> {
+    /**
+     * 获取生成器名称
+     *
+     * @return 生成器名称
+     */
+    String getName();
+
     /**
      * 获取id
      *

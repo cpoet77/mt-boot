@@ -4,6 +4,8 @@ import cn.cpoet.mt.api.tenant.Tenantry;
 import lombok.Data;
 import lombok.experimental.FieldNameConstants;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -13,20 +15,24 @@ import java.time.LocalDateTime;
  * @author CPoet
  */
 @Data
+@MappedSuperclass
 @FieldNameConstants
 public abstract class BaseTenantry extends BaseModel implements Tenantry {
     /**
      * 开始时间
      */
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
     /**
      * 结束时间
      */
+    @Column(name = "end_time", nullable = false)
     private LocalDateTime endTime;
 
     /**
      * 租期（冗余字段）
      */
+    @Column(name = "leases", nullable = false)
     private Duration leases;
 }
