@@ -49,4 +49,12 @@ public class Role extends BaseTenantable {
      */
     @Column(name = "is_built_in", nullable = false)
     private Boolean isBuiltIn;
+
+    /**
+     * 存在判断公式，用于更加细粒度的授权
+     *
+     * @see AclFormula
+     */
+    @Column(name = "is_formula", nullable = false)
+    private Boolean isFormula;
 }

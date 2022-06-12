@@ -17,6 +17,11 @@ public interface SystemConst {
     long DEFAULT_ENTITY_ID = -1;
 
     /**
+     * 默认父级ID
+     */
+    long DEFAULT_PARENT_ID = DEFAULT_ENTITY_ID;
+
+    /**
      * 游客id
      */
     long GUEST_ID = -2;
