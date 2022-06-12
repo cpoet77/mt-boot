@@ -3,6 +3,7 @@ package cn.cpoet.mt.entity;
 import cn.cpoet.mt.entity.base.BaseRecordTenantable;
 import cn.cpoet.mt.entity.constant.DbColLenConst;
 import cn.cpoet.mt.entity.constant.LoginType;
+import cn.cpoet.mt.entity.constant.LogoutType;
 import lombok.Data;
 import lombok.experimental.FieldNameConstants;
 
@@ -40,6 +41,12 @@ public class LoginLog extends BaseRecordTenantable {
     private LoginType loginType;
 
     /**
+     * 登出类型
+     */
+    @Column(name = "logout_type")
+    private LogoutType logoutType;
+
+    /**
      * 登录IP地址
      */
     @Column(name = "ip_addr", length = DbColLenConst.IP)
@@ -68,4 +75,11 @@ public class LoginLog extends BaseRecordTenantable {
      */
     @Column(name = "login_time", nullable = false)
     private LocalDateTime loginTime;
+
+
+    /**
+     * 登出时间
+     */
+    @Column(name = "logout_time")
+    private LocalDateTime logoutTime;
 }
