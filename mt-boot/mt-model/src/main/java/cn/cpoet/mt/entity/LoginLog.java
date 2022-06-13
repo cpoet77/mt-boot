@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_login_log")
 public class LoginLog extends BaseRecordTenantable {
     /**

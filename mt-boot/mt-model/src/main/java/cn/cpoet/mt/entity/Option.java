@@ -14,7 +14,6 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@RequiredArgsConstructor
 @Table(name = "mt_option")
 public class Option extends BaseTenantable {
 }

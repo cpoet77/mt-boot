@@ -15,7 +15,6 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_role_permission")
 public class RolePermission extends BaseRecordTenantable {
     /**

@@ -16,7 +16,6 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_datasource_group")
 public class DataSourceGroup extends BaseModel {
     /**

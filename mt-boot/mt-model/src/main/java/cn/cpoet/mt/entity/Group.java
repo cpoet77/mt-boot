@@ -1,6 +1,7 @@
 package cn.cpoet.mt.entity;
 
 import cn.cpoet.mt.entity.base.BaseTenantable;
+import cn.cpoet.mt.entity.constant.GroupType;
 import lombok.Data;
 import lombok.experimental.FieldNameConstants;
 
@@ -15,7 +16,6 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_group")
 public class Group extends BaseTenantable {
     /**
@@ -25,10 +25,22 @@ public class Group extends BaseTenantable {
     private Long parentId;
 
     /**
+     * 组编码
+     */
+    @Column(name = "code", nullable = false)
+    private String code;
+
+    /**
      * 用户组名
      */
     @Column(name = "name", nullable = false)
     private String name;
+
+    /**
+     * 组类型
+     */
+    @Column(name = "type", nullable = false)
+    private GroupType type;
 
     /**
      * 用户组介绍

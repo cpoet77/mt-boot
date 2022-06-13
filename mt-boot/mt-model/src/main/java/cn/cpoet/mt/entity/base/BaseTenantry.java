@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
  */
 @Data
 @MappedSuperclass
-@FieldNameConstants
 public abstract class BaseTenantry extends BaseModel implements Tenantry {
     /**
      * 开始时间

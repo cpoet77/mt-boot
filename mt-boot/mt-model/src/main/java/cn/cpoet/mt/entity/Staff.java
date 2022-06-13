@@ -20,7 +20,6 @@ import java.time.LocalDateTime;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_staff")
 public class Staff extends BaseTenantable {
     /**

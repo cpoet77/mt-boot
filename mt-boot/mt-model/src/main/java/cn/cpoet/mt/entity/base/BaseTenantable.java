@@ -15,7 +15,6 @@ import javax.persistence.MappedSuperclass;
  */
 @Data
 @MappedSuperclass
-@FieldNameConstants
 public abstract class BaseTenantable extends BaseModel implements Tenantable {
     /**
      * 租户id

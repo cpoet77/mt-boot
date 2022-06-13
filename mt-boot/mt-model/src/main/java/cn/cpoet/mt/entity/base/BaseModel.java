@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
  * @author CPoet
  */
 @Data
-@FieldNameConstants
 @MappedSuperclass
 public abstract class BaseModel extends Model {
     /**

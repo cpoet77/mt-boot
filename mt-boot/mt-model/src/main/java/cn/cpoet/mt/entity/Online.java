@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_online")
 public class Online extends BaseTenantable {
     /**

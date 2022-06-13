@@ -19,7 +19,6 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_acl_formula")
 public class AclFormula extends BaseTenantable {
     /**

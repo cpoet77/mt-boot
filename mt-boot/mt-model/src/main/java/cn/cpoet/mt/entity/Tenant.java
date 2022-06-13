@@ -17,7 +17,6 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_tenant")
 public class Tenant extends BaseTenantry {
     /**

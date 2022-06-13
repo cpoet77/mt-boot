@@ -15,7 +15,6 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_menu")
 public class Menu extends BaseTenantable {
 

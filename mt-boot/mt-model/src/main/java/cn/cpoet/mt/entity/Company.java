@@ -17,7 +17,6 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@FieldNameConstants
 @Table(name = "mt_company")
 public class Company extends BaseModel {
     /**
