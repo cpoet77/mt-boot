@@ -5,8 +5,8 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.2.12.RELEASE</version>
-    <relativePath />
+    <version>2.6.3</version>
+    <relativePath/>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -34,14 +34,27 @@
     <tiles-maven-plugin.version>2.19</tiles-maven-plugin.version>
     <!-- project version -->
     <project.version>1.0-SNAPSHOT</project.version>
+    <!-- spring-cloud -->
+    <spring-cloud-dependencies.version>2021.0.1</spring-cloud-dependencies.version>
     <!-- spring-cloud-alibaba -->
-    <spring-cloud-alibaba-dependencies.version>2.2.7.RELEASE</spring-cloud-alibaba-dependencies.version>
+    <!-- 版本对应关系查看：https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E -->
+    <spring-cloud-alibaba-dependencies.version>2021.0.1.0</spring-cloud-alibaba-dependencies.version>
     <!-- open-api -->
     <springdoc-openapi-webmvc-core.version>1.6.8</springdoc-openapi-webmvc-core.version>
+    <!-- JWT -->
+    <jjwt.version>0.11.5</jjwt.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud-dependencies.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>com.alibaba.cloud</groupId>
         <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -61,6 +74,26 @@
         <artifactId>ebean-test</artifactId>
         <version>${ebean.version}</version>
         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>${jjwt.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-impl</artifactId>
+        <version>${jjwt.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-jackson</artifactId>
+        <version>${jjwt.version}</version>
+        <scope>runtime</scope>
       </dependency>
 
       <!-- mt内部 -->

@@ -19,14 +19,16 @@
   <dependencies>
     <dependency>
       <groupId>cn.cpoet</groupId>
-      <artifactId>mt-db</artifactId>
+      <artifactId>mt-core</artifactId>
     </dependency>
 
+    <!-- nacos -->
     <dependency>
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
     </dependency>
 
+    <!-- nacos-config -->
     <dependency>
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>

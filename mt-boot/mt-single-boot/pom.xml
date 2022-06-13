@@ -21,10 +21,5 @@
       <groupId>cn.cpoet</groupId>
       <artifactId>mt-core</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>cn.cpoet</groupId>
-      <artifactId>mt-db</artifactId>
-    </dependency>
   </dependencies>
 </project>
