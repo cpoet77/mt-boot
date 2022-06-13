@@ -1,6 +1,7 @@
 package cn.cpoet.mt.api.runtime;
 
 import cn.cpoet.mt.api.auth.AuthContext;
+import org.springframework.context.ApplicationContext;
 
 /**
  * 应用上下文
@@ -21,4 +22,11 @@ public interface AppContext {
      * @return 认证上下文
      */
     AuthContext getAuthContext();
+
+    /**
+     * 获取Spring应用上下文
+     *
+     * @return Spring应用上下文
+     */
+    ApplicationContext getApplicationContext();
 }
