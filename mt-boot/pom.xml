@@ -32,6 +32,8 @@
     <ebean.version>12.15.0</ebean.version>
     <persistence-api.version>2.2.5</persistence-api.version>
     <tiles-maven-plugin.version>2.19</tiles-maven-plugin.version>
+    <!-- druid -->
+    <druid.version>1.2.10</druid.version>
     <!-- project version -->
     <project.version>1.0-SNAPSHOT</project.version>
     <!-- spring-cloud -->
@@ -67,6 +69,12 @@
         <groupId>io.ebean</groupId>
         <artifactId>ebean</artifactId>
         <version>${ebean.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>${druid.version}</version>
       </dependency>
 
       <dependency>

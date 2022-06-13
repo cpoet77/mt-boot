@@ -6,7 +6,6 @@ import cn.cpoet.mt.db.configuration.auto.DataSourceProperties;
 import io.ebean.Database;
 import io.ebean.DatabaseFactory;
 import io.ebean.config.DatabaseConfig;
-import io.ebean.config.dbplatform.DbType;
 import io.ebean.datasource.DataSourceConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

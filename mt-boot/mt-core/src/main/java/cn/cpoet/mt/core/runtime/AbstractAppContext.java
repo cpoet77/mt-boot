@@ -3,6 +3,7 @@ package cn.cpoet.mt.core.runtime;
 import cn.cpoet.mt.api.auth.AuthContext;
 import cn.cpoet.mt.api.runtime.AppContext;
 import cn.cpoet.mt.api.runtime.RunModel;
+import cn.cpoet.mt.api.tenant.Tenantry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -25,13 +26,14 @@ public abstract class AbstractAppContext implements AppContext {
     @Autowired
     protected ApplicationContext applicationContext;
 
-    public AbstractAppContext() {
-        AppContextUtil.initAppContext(this);
-    }
-
     @Override
     public RunModel getRunModel() {
         return RunModel.NONE;
+    }
+
+    @Override
+    public Tenantry getTenantry() {
+        return null;
     }
 
     @Override

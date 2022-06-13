@@ -1,5 +1,7 @@
 package cn.cpoet.mt.api.auth;
 
+import cn.cpoet.mt.api.tenant.Tenantry;
+
 /**
  * 当前主体
  * <p>系统/登录用户/游客</p>
@@ -33,7 +35,7 @@ public interface Subject {
      *
      * @return 租户信息
      */
-    TenantInfo getTenantInfo();
+    Tenantry getTenantry();
 
     /**
      * 判断是否已登录

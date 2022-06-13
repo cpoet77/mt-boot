@@ -19,12 +19,7 @@
   <dependencies>
     <dependency>
       <groupId>cn.cpoet</groupId>
-      <artifactId>mt-api</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>io.ebean</groupId>
-      <artifactId>ebean</artifactId>
+      <artifactId>mt-db</artifactId>
     </dependency>
   </dependencies>
 

@@ -27,11 +27,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         staffSubject.setStaffId(staff.getId());
         staffSubject.setAccount(staff.getAccount());
         staffSubject.setStaffName(staff.getStaffName());
-        TenantInfoHolder tenantInfo = new TenantInfoHolder();
+        ContextTenantry tenantInfo = new ContextTenantry();
         tenantInfo.setTenantId(staff.getTenantId());
         tenantInfo.setTenantName(null);
         staffSubject.setTenantInfo(tenantInfo);
-        TokenUserHolder.TokenUserHolderBuilder builder = new TokenUserHolder.TokenUserHolderBuilder()
+        TokenUser.TokenUserHolderBuilder builder = new TokenUser.TokenUserHolderBuilder()
             .staffSubject(staffSubject)
             .expireTime(staff.getExpireTime())
             .status(staff.getStatus());

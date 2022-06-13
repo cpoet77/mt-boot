@@ -2,8 +2,8 @@ package cn.cpoet.mt.core.auth;
 
 import cn.cpoet.mt.api.auth.Subject;
 import cn.cpoet.mt.api.auth.SubjectTypes;
-import cn.cpoet.mt.api.auth.TenantInfo;
 import cn.cpoet.mt.api.constant.SystemConst;
+import cn.cpoet.mt.api.tenant.Tenantry;
 
 /**
  * @author CPoet
@@ -27,8 +27,8 @@ public class SystemSubject implements Subject {
     }
 
     @Override
-    public TenantInfo getTenantInfo() {
-        return TenantInfoHolder.SYS_TENANT;
+    public Tenantry getTenantry() {
+        return ContextTenantry.SYS_TENANT;
     }
 
     @Override

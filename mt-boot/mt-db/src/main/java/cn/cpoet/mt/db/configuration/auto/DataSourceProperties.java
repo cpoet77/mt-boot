@@ -1,6 +1,5 @@
 package cn.cpoet.mt.db.configuration.auto;
 
-import cn.cpoet.mt.entity.constant.DataSourceType;
 import lombok.Data;
 
 /**
@@ -13,7 +12,7 @@ public class DataSourceProperties {
     /**
      * 数据源名称
      */
-    private String name = DataSourceType.MASTER_MA.name();
+    private String name;
 
     /**
      * 数据库驱动

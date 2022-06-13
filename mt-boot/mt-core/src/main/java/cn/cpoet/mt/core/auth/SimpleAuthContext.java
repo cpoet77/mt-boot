@@ -41,6 +41,6 @@ public class SimpleAuthContext implements AuthContext {
             return SystemSubject.INSTANCE;
         }
         // 解析认证主体信息
-        return ((TokenUserHolder) authentication.getDetails()).getStaffSubject();
+        return ((TokenUser) authentication.getDetails()).getStaffSubject();
     }
 }

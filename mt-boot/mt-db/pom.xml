@@ -19,7 +19,19 @@
   <dependencies>
     <dependency>
       <groupId>cn.cpoet</groupId>
-      <artifactId>mt-model</artifactId>
+      <artifactId>mt-api</artifactId>
+    </dependency>
+
+    <!-- druid数据库连接池（非必须） -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+    </dependency>
+
+    <!-- ebean -->
+    <dependency>
+      <groupId>io.ebean</groupId>
+      <artifactId>ebean</artifactId>
     </dependency>
 
     <!-- 默认使用的是mysql数据库，可以根据EBean的支持情况引入不同的数据库驱动 -->

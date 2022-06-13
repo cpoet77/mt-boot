@@ -1,9 +1,12 @@
 package cn.cpoet.mt.core.auth;
 
-import cn.cpoet.mt.api.auth.TenantInfo;
 import cn.cpoet.mt.api.constant.SystemConst;
+import cn.cpoet.mt.api.tenant.Tenantry;
 import lombok.AccessLevel;
 import lombok.Setter;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 /**
  * 租户信息
@@ -11,14 +14,14 @@ import lombok.Setter;
  * @author CPoet
  */
 @Setter(AccessLevel.PACKAGE)
-public class TenantInfoHolder implements TenantInfo {
+public class ContextTenantry implements Tenantry {
     /**
      * 系统级租户
      */
-    public static final TenantInfoHolder SYS_TENANT;
+    public static final ContextTenantry SYS_TENANT;
 
     static {
-        SYS_TENANT = new TenantInfoHolder();
+        SYS_TENANT = new ContextTenantry();
         SYS_TENANT.setTenantId(SystemConst.SYS_TENANT_ID);
         SYS_TENANT.setTenantName(null);
     }
@@ -39,7 +42,18 @@ public class TenantInfoHolder implements TenantInfo {
     }
 
     @Override
-    public String getName() {
-        return tenantName;
+    public LocalDateTime getStartTime() {
+        return null;
     }
+
+    @Override
+    public LocalDateTime getEndTime() {
+        return null;
+    }
+
+    @Override
+    public Duration getLeases() {
+        return null;
+    }
+
 }

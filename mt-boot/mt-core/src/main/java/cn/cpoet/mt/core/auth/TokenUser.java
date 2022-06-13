@@ -16,7 +16,7 @@ import java.util.*;
  * @author CPoet
  */
 @Builder(access = AccessLevel.PACKAGE)
-public class TokenUserHolder implements UserDetails {
+public class TokenUser implements UserDetails {
     /**
      * 标识角色前缀
      */
