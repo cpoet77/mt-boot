@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<migration xmlns="http://ebean-orm.github.io/xml/ns/dbmigration">
+    <changeSet type="apply">
+        <createTable name="mt_acl_formula" identityType="external" pkName="pk_mt_acl_formula">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="name" type="varchar" notnull="true" unique="uq_mt_acl_formula_name"/>
+            <column name="left_formula" type="varchar" notnull="true"/>
+            <column name="left_type" type="varchar(4)" notnull="true" checkConstraint="check ( left_type in ('1','2','4','1024'))" checkConstraintName="ck_mt_acl_formula_left_type"/>
+            <column name="symbol" type="varchar(1)" notnull="true" checkConstraint="check ( symbol in ('1','2','3','4','5','6'))" checkConstraintName="ck_mt_acl_formula_symbol"/>
+            <column name="right_formula" type="varchar" notnull="true"/>
+            <column name="right_type" type="varchar(4)" notnull="true" checkConstraint="check ( right_type in ('1','2','4','1024'))" checkConstraintName="ck_mt_acl_formula_right_type"/>
+            <column name="status" type="varchar(1)" notnull="true" checkConstraint="check ( status in ('0','1','2'))" checkConstraintName="ck_mt_acl_formula_status"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_company" identityType="external" pkName="pk_mt_company">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="name" type="varchar" notnull="true" unique="uq_mt_company_name"/>
+            <column name="logo" type="varchar(512)"/>
+            <column name="principal" type="varchar(30)" notnull="true"/>
+            <column name="mobile" type="varchar(42)" notnull="true"/>
+            <column name="telephone" type="varchar(38)"/>
+            <column name="email" type="varchar(99)"/>
+            <column name="address" type="varchar"/>
+            <column name="description" type="CLOB"/>
+            <column name="ext01" type="CLOB"/>
+            <column name="ext02" type="CLOB"/>
+            <column name="ext03" type="CLOB"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_datasource" identityType="external" pkName="pk_mt_datasource">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="name" type="varchar" notnull="true" unique="uq_mt_datasource_name"/>
+            <column name="group_id" type="bigint" notnull="true"/>
+            <column name="url" type="varchar(512)" notnull="true"/>
+            <column name="username" type="varchar(48)" notnull="true"/>
+            <column name="password" type="varchar(128)" notnull="true"/>
+            <column name="driver_name" type="varchar(68)" notnull="true"/>
+            <column name="type" type="varchar(1)" notnull="true" checkConstraint="check ( type in ('1','2','3','4'))" checkConstraintName="ck_mt_datasource_type"/>
+            <column name="remark" type="varchar(512)"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_datasource_group" identityType="external" pkName="pk_mt_datasource_group">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="name" type="varchar" notnull="true" unique="uq_mt_datasource_group_name"/>
+            <column name="description" type="CLOB"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_group" identityType="external" pkName="pk_mt_group">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="parent_id" type="bigint" notnull="true"/>
+            <column name="name" type="varchar" notnull="true"/>
+            <column name="description" type="varchar"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_group_staff" identityType="external" pkName="pk_mt_group_staff">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="group_id" type="bigint" notnull="true"/>
+            <column name="staff_id" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_login_log" identityType="external" pkName="pk_mt_login_log">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="staff_id" type="bigint" notnull="true"/>
+            <column name="account" type="varchar(50)" notnull="true"/>
+            <column name="login_type" type="varchar(15)" notnull="true" checkConstraint="check ( login_type in ('account','mobile','email','qq-auth','wechat','wechat-mini-app','github','gitee','baidu'))" checkConstraintName="ck_mt_login_log_login_type"/>
+            <column name="logout_type" type="varchar(1)" checkConstraint="check ( logout_type in ('1','2','3'))" checkConstraintName="ck_mt_login_log_logout_type"/>
+            <column name="ip_addr" type="varchar(128)"/>
+            <column name="user_agent" type="varchar"/>
+            <column name="os" type="varchar"/>
+            <column name="screen" type="varchar"/>
+            <column name="login_time" type="localdatetime" notnull="true"/>
+            <column name="logout_time" type="localdatetime"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_menu" identityType="external" pkName="pk_mt_menu">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_online" identityType="external" pkName="pk_mt_online">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="login_id" type="bigint" notnull="true"/>
+            <column name="token" type="varchar" notnull="true"/>
+            <column name="start_time" type="localdatetime" notnull="true"/>
+            <column name="end_time" type="localdatetime" notnull="true"/>
+            <column name="duration" type="bigint" notnull="true"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_operator_log" identityType="external" pkName="pk_mt_operator_log">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_option" identityType="external" pkName="pk_mt_option">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_permission" identityType="external" pkName="pk_mt_permission">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="parent_id" type="bigint" notnull="true"/>
+            <column name="code" type="varchar" notnull="true" unique="uq_mt_permission_code"/>
+            <column name="name" type="varchar" notnull="true" unique="uq_mt_permission_name"/>
+            <column name="icon" type="varchar(512)"/>
+            <column name="description" type="CLOB"/>
+            <column name="is_built_in" type="boolean" notnull="true"/>
+            <column name="status" type="varchar(1)" notnull="true" checkConstraint="check ( status in ('0','1','2'))" checkConstraintName="ck_mt_permission_status"/>
+            <column name="sorted" type="integer" notnull="true"/>
+            <column name="type" type="varchar(4)" notnull="true" checkConstraint="check ( type in ('1','2','4','8','16','1024'))" checkConstraintName="ck_mt_permission_type"/>
+            <column name="is_formula" type="boolean" notnull="true"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_role" identityType="external" pkName="pk_mt_role">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="name" type="varchar" notnull="true" unique="uq_mt_role_name"/>
+            <column name="sorted" type="integer" notnull="true"/>
+            <column name="description" type="CLOB"/>
+            <column name="status" type="varchar(1)" notnull="true" checkConstraint="check ( status in ('0','1','2'))" checkConstraintName="ck_mt_role_status"/>
+            <column name="is_built_in" type="boolean" notnull="true"/>
+            <column name="is_formula" type="boolean" notnull="true"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_role_permission" identityType="external" pkName="pk_mt_role_permission">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="role_id" type="bigint"/>
+            <column name="permission_id" type="bigint"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_staff" identityType="external" pkName="pk_mt_staff">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="staff_name" type="varchar(30)" notnull="true"/>
+            <column name="account" type="varchar(50)" notnull="true"/>
+            <column name="email" type="varchar(99)"/>
+            <column name="avatar" type="varchar(512)"/>
+            <column name="mobile" type="varchar(42)"/>
+            <column name="password" type="varchar(128)" notnull="true"/>
+            <column name="description" type="CLOB"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_staff_role" identityType="external" pkName="pk_mt_staff_role">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="tenant_id" type="bigint" notnull="true"/>
+            <column name="staff_id" type="bigint" notnull="true"/>
+            <column name="role_id" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createTable name="mt_tenant" identityType="external" pkName="pk_mt_tenant">
+            <column name="id" type="bigint" primaryKey="true" identity="true"/>
+            <column name="start_time" type="localdatetime" notnull="true"/>
+            <column name="end_time" type="localdatetime" notnull="true"/>
+            <column name="leases" type="bigint" notnull="true"/>
+            <column name="company_id" type="bigint" notnull="true"/>
+            <column name="ds_type" type="varchar(3)" notnull="true" checkConstraint="check ( ds_type in ('1','2','128'))" checkConstraintName="ck_mt_tenant_ds_type"/>
+            <column name="status" type="varchar(1)" notnull="true" checkConstraint="check ( status in ('0','1','2'))" checkConstraintName="ck_mt_tenant_status"/>
+            <column name="version" type="integer" notnull="true"/>
+            <column name="last_mod_staff" type="bigint" notnull="true"/>
+            <column name="deleted" type="boolean" defaultValue="false" notnull="true"/>
+            <column name="created_time" type="localdatetime" notnull="true"/>
+            <column name="updated_time" type="localdatetime" notnull="true"/>
+        </createTable>
+        <createIndex indexName="ix_mt_staff_account" tableName="mt_staff" columns="account"/>
+        <createIndex indexName="ix_mt_staff_email" tableName="mt_staff" columns="email"/>
+        <createIndex indexName="ix_mt_staff_mobile" tableName="mt_staff" columns="mobile"/>
+    </changeSet>
+</migration>
