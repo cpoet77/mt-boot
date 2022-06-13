@@ -2,6 +2,9 @@ package cn.cpoet.mt.api.runtime;
 
 import cn.cpoet.mt.api.exception.AppContextReadyException;
 
+import java.util.List;
+import java.util.function.Consumer;
+
 /**
  * 上下文工具
  *
@@ -10,6 +13,8 @@ import cn.cpoet.mt.api.exception.AppContextReadyException;
 public final class AppContextHolder {
 
     private static AppContext thisAppContext;
+
+    private static List<Consumer<AppContext>> briefConsumer;
 
     /**
      * 判断环境是否已就绪
@@ -31,6 +36,20 @@ public final class AppContextHolder {
             throw new AppContextReadyException("the app-context is not ready");
         }
         return appContext;
+    }
+
+    /**
+     * 消费就绪已经就绪的上下文
+     *
+     * @param consumer 消费上下文
+     */
+    public static void consume(Consumer<AppContext> consumer) {
+        if (thisAppContext == null) {
+            synchronized (AppContextHolder.class) {
+
+            }
+        }
+        consumer.accept(thisAppContext);
     }
 
     /**
