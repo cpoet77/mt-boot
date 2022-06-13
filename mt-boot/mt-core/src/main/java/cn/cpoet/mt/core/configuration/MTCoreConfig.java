@@ -6,12 +6,14 @@ import cn.cpoet.mt.core.comm.SimpleUUIDGenerator;
 import cn.cpoet.mt.core.configuration.auto.SnowFlakeProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 /**
  * 核心配置
  *
  * @author CPoet
  */
+@Import({CoreAuthConfig.class})
 public class MTCoreConfig {
     @Bean
     @ConfigurationProperties(prefix = "cpoet.mt.snow-flake")
