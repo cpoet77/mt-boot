@@ -12,6 +12,11 @@ public interface SystemConst {
     long SYSTEM_ID = 0;
 
     /**
+     * 系统租户ID
+     */
+    long SYS_TENANT_ID = SYSTEM_ID;
+
+    /**
      * 默认实体id
      */
     long DEFAULT_ENTITY_ID = -1;
