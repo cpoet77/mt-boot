@@ -7,6 +7,11 @@ package cn.cpoet.mt.api.runtime;
  */
 public enum RunModel {
     /**
+     * 未具体指定
+     */
+    NONE,
+
+    /**
      * 单体应用
      */
     SINGLE,
