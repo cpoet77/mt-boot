@@ -35,7 +35,6 @@ public class EBeanConfig {
     @Bean
     @ConditionalOnMissingBean
     public DatabaseConfig databaseConfig(DataSourceProperties dataSourceProperties,
-//                                         AuthContext authContext,
                                          List<IDGenerator<?>> idGenerators) {
         DatabaseConfig config = new DatabaseConfig();
         // 数据源名称

@@ -11,22 +11,17 @@
 
   <artifactId>mt-db</artifactId>
 
-  <properties>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>cn.cpoet</groupId>
       <artifactId>mt-api</artifactId>
     </dependency>
 
-    <!-- druid数据库连接池（非必须） -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>druid</artifactId>
-    </dependency>
+    <!-- druid数据库连接池 -->
+<!--    <dependency>-->
+<!--      <groupId>com.alibaba</groupId>-->
+<!--      <artifactId>druid</artifactId>-->
+<!--    </dependency>-->
 
     <!-- ebean -->
     <dependency>

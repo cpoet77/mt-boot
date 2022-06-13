@@ -21,11 +21,6 @@
 
   <artifactId>mt-web</artifactId>
 
-  <properties>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>cn.cpoet</groupId>
@@ -38,5 +33,4 @@
       <artifactId>mt-cloud-boot</artifactId>
     </dependency>
   </dependencies>
-
 </project>

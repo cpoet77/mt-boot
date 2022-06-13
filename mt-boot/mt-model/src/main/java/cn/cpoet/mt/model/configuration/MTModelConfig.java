@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  *
  * @author CPoet
  */
-@EntityScan("cn.cpoet.mt.model.entity")
+@EntityScan("cn.cpoet.mt.model.domain")
 @ComponentScan("cn.cpoet.mt.model.dao")
 public class MTModelConfig {
 }
