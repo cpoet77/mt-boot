@@ -1,6 +1,7 @@
 package cn.cpoet.mt.entity;
 
 import cn.cpoet.mt.entity.base.BaseTenantable;
+import cn.cpoet.mt.entity.constant.CommStatus;
 import cn.cpoet.mt.entity.constant.DbColLenConst;
 import cn.cpoet.mt.entity.constant.DbTypeConst;
 import io.ebean.annotation.Index;
@@ -10,6 +11,7 @@ import lombok.experimental.FieldNameConstants;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 /**
  * 人员
@@ -65,4 +67,16 @@ public class Staff extends BaseTenantable {
      */
     @Column(name = "description", columnDefinition = DbTypeConst.TEXT)
     private String description;
+
+    /**
+     * 过期时间
+     */
+    @Column(name = "expire_time")
+    private LocalDateTime expireTime;
+
+    /**
+     * 用户状态
+     */
+    @Column(name = "status", nullable = false)
+    private CommStatus status;
 }

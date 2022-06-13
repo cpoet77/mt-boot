@@ -29,8 +29,8 @@ public class Role extends BaseTenantable {
     /**
      * 排序
      */
-    @Column(name = "order", nullable = false)
-    private Integer order;
+    @Column(name = "sorted", nullable = false)
+    private Integer sorted;
 
     /**
      * 介绍
