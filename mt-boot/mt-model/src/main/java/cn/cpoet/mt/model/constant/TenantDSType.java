@@ -18,12 +18,12 @@ public enum TenantDSType {
     /**
      * 共享主数据源
      */
-    MASTER(1),
+    MAIN(1),
 
     /**
      * 使用其它数据库
      */
-    VICE(2),
+    EXT(2),
 
     /**
      * 未定义
