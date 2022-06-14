@@ -18,10 +18,10 @@
     </dependency>
 
     <!-- druid数据库连接池 -->
-<!--    <dependency>-->
-<!--      <groupId>com.alibaba</groupId>-->
-<!--      <artifactId>druid</artifactId>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+    </dependency>
 
     <!-- ebean -->
     <dependency>

@@ -34,7 +34,7 @@
     <persistence-api.version>2.2.5</persistence-api.version>
     <tiles-maven-plugin.version>2.19</tiles-maven-plugin.version>
     <!-- druid -->
-    <druid.version>1.2.0</druid.version>
+    <druid.version>1.2.11</druid.version>
     <!-- spring-cloud -->
     <spring-cloud-dependencies.version>2021.0.1</spring-cloud-dependencies.version>
     <!-- spring-cloud-alibaba -->
@@ -70,11 +70,11 @@
         <version>${ebean.version}</version>
       </dependency>
 
-<!--      <dependency>-->
-<!--        <groupId>com.alibaba</groupId>-->
-<!--        <artifactId>druid</artifactId>-->
-<!--        <version>${druid.version}</version>-->
-<!--      </dependency>-->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
 
       <dependency>
         <groupId>io.ebean</groupId>
