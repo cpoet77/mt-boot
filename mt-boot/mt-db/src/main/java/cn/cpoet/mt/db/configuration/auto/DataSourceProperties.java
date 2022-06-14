@@ -2,6 +2,8 @@ package cn.cpoet.mt.db.configuration.auto;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * custom-datasource
  *
@@ -9,5 +11,5 @@ import lombok.Data;
  */
 @Data
 public class DataSourceProperties extends DataSourceConfig {
-    private DataSourceConfig slave;
+    private List<DataSourceConfig> slaves;
 }

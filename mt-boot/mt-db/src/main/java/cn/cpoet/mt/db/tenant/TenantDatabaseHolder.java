@@ -9,12 +9,15 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 租户数据库信息信息
+ * 租户数据库信息
  *
  * @author CPoet
  */
 @RequiredArgsConstructor
 class TenantDatabaseHolder {
+
+    private final Object lock = new Object();
+
     /**
      * 租户ID
      */
@@ -24,6 +27,7 @@ class TenantDatabaseHolder {
     /**
      * 主库全称
      */
+    @Getter
     private String masterName;
 
     /**
@@ -36,19 +40,21 @@ class TenantDatabaseHolder {
      */
     private SlaveDbHolder slave;
 
+    /**
+     * 从库
+     */
     private Map<String, SlaveDbHolder> slaveMap;
 
-    public String getMasterName() {
-        return masterName;
-    }
 
     public void setMaster(Database database) {
         setMaster(database.name(), database);
     }
 
     public void setMaster(String dbName, Database database) {
-        masterName = dbName;
-        master = database;
+        synchronized (lock) {
+            masterName = dbName;
+            master = database;
+        }
     }
 
     public Database getMaster() {
@@ -60,41 +66,45 @@ class TenantDatabaseHolder {
     }
 
     public void addSlave(String dbName, Database database) {
-        if (!Objects.equals(dbName, masterName)) {
-            if (slaveMap == null) {
-                slaveMap = new ConcurrentHashMap<>();
-            }
-            SlaveDbHolder slaveDbHolder = slaveMap.get(dbName);
-            if (slaveDbHolder != null) {
-                slaveDbHolder.db = database;
-            } else {
-                SlaveDbHolder newSlave = new SlaveDbHolder();
-                newSlave.db = database;
-                if (slave == null) {
-                    slave = newSlave;
-                    slave.pre = newSlave;
-                    slave.next = newSlave;
-                } else {
-                    newSlave.next = slave.next;
-                    slave.next.pre = newSlave;
-                    slave.next = newSlave;
-                    newSlave.pre = slave;
+        synchronized (lock) {
+            if (!Objects.equals(dbName, masterName)) {
+                if (slaveMap == null) {
+                    slaveMap = new ConcurrentHashMap<>();
                 }
-                slaveMap.put(dbName, newSlave);
+                SlaveDbHolder slaveDbHolder = slaveMap.get(dbName);
+                if (slaveDbHolder != null) {
+                    slaveDbHolder.db = database;
+                } else {
+                    SlaveDbHolder newSlave = new SlaveDbHolder();
+                    newSlave.db = database;
+                    if (slave == null) {
+                        slave = newSlave;
+                        slave.pre = newSlave;
+                        slave.next = newSlave;
+                    } else {
+                        newSlave.next = slave.next;
+                        slave.next.pre = newSlave;
+                        slave.next = newSlave;
+                        newSlave.pre = slave;
+                    }
+                    slaveMap.put(dbName, newSlave);
+                }
             }
         }
     }
 
     public void removeSlave(String dbName) {
-        if (!Objects.equals(dbName, masterName) && !slaveMap.isEmpty()) {
-            SlaveDbHolder slaveNode = slaveMap.remove(dbName);
-            if (slaveNode != null) {
-                if (slaveMap.isEmpty()) {
-                    slave = null;
-                    slaveMap = null;
+        synchronized (lock) {
+            if (!Objects.equals(dbName, masterName) && !slaveMap.isEmpty()) {
+                SlaveDbHolder slaveNode = slaveMap.remove(dbName);
+                if (slaveNode != null) {
+                    if (slaveMap.isEmpty()) {
+                        slave = null;
+                        slaveMap = null;
+                    }
+                    slaveNode.next.pre = slaveNode.pre;
+                    slaveNode.pre.next = slaveNode.next;
                 }
-                slaveNode.next.pre = slaveNode.pre;
-                slaveNode.pre.next = slaveNode.next;
             }
         }
     }
@@ -108,11 +118,15 @@ class TenantDatabaseHolder {
     }
 
     public Database getSlave() {
-        if (slave == null) {
+        SlaveDbHolder sdh = slave;
+        if (sdh == null) {
             return master;
         }
-        SlaveDbHolder sdh = slave;
-        slave = slave.next;
+        synchronized (lock) {
+            if (slave != null) {
+                slave = slave.next;
+            }
+        }
         return sdh.db;
     }
 
