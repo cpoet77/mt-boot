@@ -1,8 +1,9 @@
 package cn.cpoet.mt.core.auth;
 
-import cn.cpoet.mt.entity.Role;
-import cn.cpoet.mt.entity.Staff;
-import cn.cpoet.mt.entity.query.*;
+import cn.cpoet.mt.core.auth.TokenUser.TokenUserBuilder;
+import cn.cpoet.mt.model.domain.Role;
+import cn.cpoet.mt.model.domain.Staff;
+import cn.cpoet.mt.model.domain.query.*;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         tenantInfo.setTenantId(staff.getTenantId());
         tenantInfo.setTenantName(null);
         staffSubject.setTenantInfo(tenantInfo);
-        TokenUser.TokenUserHolderBuilder builder = new TokenUser.TokenUserHolderBuilder()
+        TokenUserBuilder builder = new TokenUserBuilder()
             .staffSubject(staffSubject)
             .expireTime(staff.getExpireTime())
             .status(staff.getStatus());
@@ -52,9 +53,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (CollectionUtils.isEmpty(roles)) {
             return builder.build();
         }
-        List<String> roleNames = roles
+        List<String> roleCodes = roles
             .stream()
-            .map(Role::getName)
+            .map(Role::getCode)
             .collect(Collectors.toList());
         List<Long> permissionIds = new QRolePermission()
             .select(QRolePermission.alias().permissionId)
@@ -63,14 +64,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             .asDto(Long.class)
             .findList();
         if (CollectionUtils.isEmpty(permissionIds)) {
-            return builder.roles(roleNames).build();
+            return builder.roles(roleCodes).build();
         }
-        List<String> permissionNames = new QPermission()
-            .select(QPermission.alias().name)
+        List<String> permissionCodes = new QPermission()
+            .select(QPermission.alias().code)
             .id.in(permissionIds)
             .tenantId.eq(staff.getTenantId())
             .asDto(String.class)
             .findList();
-        return builder.roles(roleNames).permissions(permissionNames).build();
+        return builder.roles(roleCodes).permissions(permissionCodes).build();
     }
 }

@@ -19,6 +19,12 @@ import javax.persistence.Table;
 @Table(name = "mt_role")
 public class Role extends BaseTenantable {
     /**
+     * 角色编码
+     */
+    @Column(name = "code", unique = true, nullable = false)
+    private String code;
+
+    /**
      * 角色名称
      */
     @Column(name = "name", unique = true, nullable = false)

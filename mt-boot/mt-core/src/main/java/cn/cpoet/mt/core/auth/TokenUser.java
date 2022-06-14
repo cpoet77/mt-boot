@@ -1,6 +1,6 @@
 package cn.cpoet.mt.core.auth;
 
-import cn.cpoet.mt.entity.constant.CommStatus;
+import cn.cpoet.mt.model.constant.CommStatus;
 import lombok.AccessLevel;
 import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;

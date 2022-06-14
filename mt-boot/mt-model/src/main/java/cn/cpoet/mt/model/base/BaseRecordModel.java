@@ -1,11 +1,10 @@
 package cn.cpoet.mt.model.base;
 
 import cn.cpoet.mt.api.constant.SystemConst;
-import io.ebean.Model;
+import cn.cpoet.mt.db.domain.BaseDbModel;
 import io.ebean.annotation.SoftDelete;
 import io.ebean.annotation.WhenCreated;
 import lombok.Data;
-import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -20,7 +19,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @MappedSuperclass
-public abstract class BaseRecordModel extends Model {
+public abstract class BaseRecordModel extends BaseDbModel {
     /**
      * pk
      */
