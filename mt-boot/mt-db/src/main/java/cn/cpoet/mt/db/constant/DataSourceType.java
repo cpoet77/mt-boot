@@ -19,22 +19,22 @@ public enum DataSourceType {
     /**
      * 主库
      */
-    MASTER_MA(1, "主库-主"),
+    MAIN_MASTER(1, "主库-主"),
 
     /**
      * 主库
      */
-    MASTER_VI(2, "主库-副"),
+    MAIN_SLAVE(2, "主库-从"),
 
     /**
-     * 副库
+     * 扩展库
      */
-    VICE_MA(3, "副库-主"),
+    EXT_MASTER(3, "扩展-主"),
 
     /**
-     * 副库
+     * 扩展库
      */
-    VICE_VI(4, "副库-从");
+    EXT_SLAVE(4, "扩展-从");
 
     @Getter(onMethod_ = {@JsonValue, @DbEnumValue})
     private final int code;
