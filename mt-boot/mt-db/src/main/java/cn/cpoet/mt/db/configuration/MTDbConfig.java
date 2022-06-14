@@ -1,5 +1,9 @@
 package cn.cpoet.mt.db.configuration;
 
+import cn.cpoet.mt.db.configuration.auto.DataSourceProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
 /**
@@ -7,6 +11,12 @@ import org.springframework.context.annotation.Import;
  *
  * @author CPoet
  */
-@Import({EBeanConfig.class})
+@Import({InitDbConfig.class})
 public class MTDbConfig {
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
+    @ConditionalOnMissingBean
+    public DataSourceProperties dataSourceProperties() {
+        return new DataSourceProperties();
+    }
 }

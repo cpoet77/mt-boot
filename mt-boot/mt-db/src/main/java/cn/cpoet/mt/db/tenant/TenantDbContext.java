@@ -5,6 +5,5 @@ package cn.cpoet.mt.db.tenant;
  *
  * @author CPoet
  */
-public interface TenantDbContext {
-    boolean remove(Long tenantId, String name);
+public class TenantDbContext {
 }

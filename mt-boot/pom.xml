@@ -44,6 +44,8 @@
     <springdoc-openapi-webmvc-core.version>1.6.8</springdoc-openapi-webmvc-core.version>
     <!-- JWT -->
     <jjwt.version>0.11.5</jjwt.version>
+    <!-- redisson -->
+    <redisson-spring-boot-starter.version>3.17.3</redisson-spring-boot-starter.version>
   </properties>
 
   <dependencyManagement>
@@ -81,6 +83,12 @@
         <artifactId>ebean-test</artifactId>
         <version>${ebean.version}</version>
         <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.redisson</groupId>
+        <artifactId>redisson-spring-boot-starter</artifactId>
+        <version>${redisson-spring-boot-starter.version}</version>
       </dependency>
 
       <dependency>
