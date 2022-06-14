@@ -2,7 +2,6 @@ package cn.cpoet.mt.db.configuration;
 
 import cn.cpoet.mt.api.comm.IDGenerator;
 import cn.cpoet.mt.api.constant.SystemConst;
-import cn.cpoet.mt.api.runtime.AppContext;
 import cn.cpoet.mt.db.comm.IdGeneratorWrapper;
 import cn.cpoet.mt.db.configuration.auto.DataSourceConfig;
 import cn.cpoet.mt.db.configuration.auto.DataSourceProperties;
