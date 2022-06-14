@@ -1,4 +1,4 @@
-package cn.cpoet.mt.model.constant;
+package cn.cpoet.mt.db.constant;
 
 import cn.cpoet.mt.api.exception.EnumUndefinedException;
 import cn.cpoet.mt.api.util.EnumUtil;

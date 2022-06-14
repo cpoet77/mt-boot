@@ -2,7 +2,7 @@ package cn.cpoet.mt.model.domain;
 
 import cn.cpoet.mt.model.base.BaseTenantry;
 import cn.cpoet.mt.model.constant.CommStatus;
-import cn.cpoet.mt.model.constant.TenantDSType;
+import cn.cpoet.mt.db.constant.TenantDSType;
 import lombok.Data;
 
 import javax.persistence.Column;
