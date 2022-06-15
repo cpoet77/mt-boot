@@ -1,4 +1,4 @@
-package cn.cpoet.mt.core.util;
+package cn.cpoet.mt.api.util;
 
 import java.time.Duration;
 import java.util.EmptyStackException;
