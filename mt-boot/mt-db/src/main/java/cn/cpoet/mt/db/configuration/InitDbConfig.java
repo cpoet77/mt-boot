@@ -10,15 +10,14 @@ import cn.cpoet.mt.db.comm.IdGeneratorWrapper;
 import cn.cpoet.mt.db.configuration.auto.DataSourceConfig;
 import cn.cpoet.mt.db.configuration.auto.DataSourceProperties;
 import cn.cpoet.mt.db.constant.DataSourceType;
+import cn.cpoet.mt.db.tenant.DatabaseProxy;
 import cn.cpoet.mt.db.tenant.TenantDbContext;
 import com.alibaba.druid.pool.DruidDataSource;
 import io.ebean.Database;
 import io.ebean.DatabaseFactory;
 import io.ebean.config.DatabaseConfig;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.*;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -77,7 +76,6 @@ public class InitDbConfig {
                 .map(IdGeneratorWrapper::new)
                 .collect(Collectors.toList()));
         }
-        return DatabaseFactory.create(config);
-
+        return DatabaseProxy.proxy(DatabaseFactory.create(config));
     }
 }
