@@ -1,7 +1,11 @@
 package cn.cpoet.mt.db.configuration;
 
+import cn.cpoet.mt.api.auth.AuthContext;
+import cn.cpoet.mt.api.auth.Subject;
 import cn.cpoet.mt.api.comm.IDGenerator;
 import cn.cpoet.mt.api.constant.SystemConst;
+import cn.cpoet.mt.api.runtime.AppContext;
+import cn.cpoet.mt.api.tenant.Tenantry;
 import cn.cpoet.mt.db.comm.IdGeneratorWrapper;
 import cn.cpoet.mt.db.configuration.auto.DataSourceConfig;
 import cn.cpoet.mt.db.configuration.auto.DataSourceProperties;
@@ -29,6 +33,7 @@ import java.util.stream.Collectors;
 @Configuration
 @RequiredArgsConstructor
 public class InitDbConfig {
+    private final AppContext appContext;
     private final List<IDGenerator<?>> idGenerators;
     private final DataSourceProperties dataSourceProperties;
 
@@ -59,9 +64,11 @@ public class InitDbConfig {
         // 数据源名称
         config.setName(dbName);
         // 当前用户上下文信息
-        config.setCurrentUserProvider(() -> -1L);
+        Subject subject = appContext.getAuthContext().currentSubject();
+        config.setCurrentUserProvider(subject::getId);
         // 当前租户信息
-        config.setCurrentTenantProvider(() -> SystemConst.SYS_TENANT_ID);
+        Tenantry tenantry = appContext.getTenantry();
+        config.setCurrentTenantProvider(tenantry::getId);
         config.setDataSource(druidDataSource);
         // ID生成器注册
         if (!CollectionUtils.isEmpty(idGenerators)) {

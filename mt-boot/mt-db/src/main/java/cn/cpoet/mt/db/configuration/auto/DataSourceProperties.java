@@ -11,5 +11,8 @@ import java.util.List;
  */
 @Data
 public class DataSourceProperties extends DataSourceConfig {
+    /**
+     * 从库配置
+     */
     private List<DataSourceConfig> slaves;
 }

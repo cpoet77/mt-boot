@@ -1,11 +1,9 @@
 package cn.cpoet.mt.single;
 
-import cn.cpoet.mt.api.constant.SystemConst;
 import cn.cpoet.mt.db.tenant.TenantDb;
 import cn.cpoet.mt.db.tenant.TenantDbContext;
 import cn.cpoet.mt.model.domain.StaffRole;
 import cn.cpoet.mt.model.domain.query.QStaffRole;
-import io.ebean.Database;
 import io.ebean.annotation.Platform;
 import io.ebean.dbmigration.DbMigration;
 import org.junit.jupiter.api.Test;
@@ -57,12 +55,12 @@ public class DBMigrationTest {
 //            .findOne();
 
         System.out.println(TenantDb
-            .agent(QStaffRole::new)
+            .better(QStaffRole::new)
             .id.eq(staffRole.getId())
             .findOne());
 
         System.out.println(TenantDb
-            .agent(QStaffRole.class)
+            .better(QStaffRole.class)
             .id.eq(staffRole.getId())
             .findOne());
 

@@ -4,6 +4,7 @@ import cn.cpoet.mt.api.auth.AuthContext;
 import cn.cpoet.mt.api.tenant.Tenantry;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
+import org.springframework.lang.Nullable;
 
 /**
  * 应用上下文
