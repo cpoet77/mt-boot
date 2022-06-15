@@ -16,12 +16,12 @@ public class TenantDb {
 
     private final static TenantDbContext CONTEXT = TenantDbContext.getInstance();
 
-    public static <T> T agent(Function<Database, T> func) {
+    public static <T> T better(Function<Database, T> func) {
         return func.apply(CONTEXT.getSalve(SystemConst.SYS_TENANT_ID));
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T agent(Class<? extends TQRootBean<?, T>> tClass) {
+    public static <T> T better(Class<? extends TQRootBean<?, T>> tClass) {
         try {
             return (T) ReflectionUtils
                 .accessibleConstructor(tClass, Database.class)
