@@ -13,6 +13,7 @@
   <groupId>cn.cpoet</groupId>
   <artifactId>mt-boot</artifactId>
   <version>1.0-SNAPSHOT</version>
+
   <modules>
     <module>mt-api</module>
     <module>mt-db</module>
