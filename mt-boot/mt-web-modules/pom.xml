@@ -16,6 +16,7 @@
     <module>mt-web-comm</module>
     <module>mt-web-wsocket</module>
     <module>mt-web-resource</module>
+    <module>mt-web-support</module>
   </modules>
 
   <artifactId>mt-web-modules</artifactId>
