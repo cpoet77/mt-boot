@@ -1,6 +1,5 @@
 package cn.cpoet.mt.db.configuration;
 
-import cn.cpoet.mt.api.auth.AuthContext;
 import cn.cpoet.mt.api.auth.Subject;
 import cn.cpoet.mt.api.comm.IDGenerator;
 import cn.cpoet.mt.api.constant.SystemConst;
@@ -17,7 +16,9 @@ import io.ebean.Database;
 import io.ebean.DatabaseFactory;
 import io.ebean.config.DatabaseConfig;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
