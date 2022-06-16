@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.cpoet.mt.cloud.boot.configuration.MTCloudBootConfig
+  cn.cpoet.mt.cloud.boot.configuration.CloudBootConfig

@@ -5,7 +5,7 @@ package cn.cpoet.mt.api.exception;
  *
  * @author CPoet
  */
-public class EnumUndefinedException extends MTException {
+public class EnumUndefinedException extends AppException {
 
     public final static EnumUndefinedException DEFAULT = new EnumUndefinedException("undefined enum type.");
 

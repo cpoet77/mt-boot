@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.cpoet.mt.model.configuration.MTModelConfig
+  cn.cpoet.mt.model.configuration.ModelConfig

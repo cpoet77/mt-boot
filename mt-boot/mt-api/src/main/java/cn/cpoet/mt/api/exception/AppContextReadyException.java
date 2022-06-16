@@ -5,7 +5,7 @@ package cn.cpoet.mt.api.exception;
  *
  * @author CPoet
  */
-public class AppContextReadyException extends MTException {
+public class AppContextReadyException extends AppException {
     public AppContextReadyException(String message) {
         super(message);
     }

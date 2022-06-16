@@ -19,7 +19,7 @@
 
     <dependency>
       <groupId>cn.cpoet</groupId>
-      <artifactId>mt-comm</artifactId>
+      <artifactId>mt-web-comm</artifactId>
       <version>${project.version}</version>
       <exclusions>
         <exclusion>
@@ -31,7 +31,7 @@
 
     <dependency>
       <groupId>cn.cpoet</groupId>
-      <artifactId>mt-admin</artifactId>
+      <artifactId>mt-web-admin</artifactId>
       <version>${project.version}</version>
       <exclusions>
         <exclusion>
@@ -43,7 +43,7 @@
 
     <dependency>
       <groupId>cn.cpoet</groupId>
-      <artifactId>mt-tenant</artifactId>
+      <artifactId>mt-web-tenant</artifactId>
       <version>${project.version}</version>
       <exclusions>
         <exclusion>
@@ -55,7 +55,7 @@
 
     <dependency>
       <groupId>cn.cpoet</groupId>
-      <artifactId>mt-wsocket</artifactId>
+      <artifactId>mt-web-wsocket</artifactId>
       <version>${project.version}</version>
       <exclusions>
         <exclusion>
@@ -67,7 +67,7 @@
 
     <dependency>
       <groupId>cn.cpoet</groupId>
-      <artifactId>mt-resource</artifactId>
+      <artifactId>mt-web-resource</artifactId>
       <version>${project.version}</version>
       <exclusions>
         <exclusion>

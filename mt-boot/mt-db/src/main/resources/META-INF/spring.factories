@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.cpoet.mt.db.configuration.MTDbConfig
+  cn.cpoet.mt.db.configuration.DbConfig

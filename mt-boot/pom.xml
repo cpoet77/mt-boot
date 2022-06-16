@@ -21,8 +21,9 @@
     <module>mt-core</module>
     <module>mt-single-boot</module>
     <module>mt-cloud-boot</module>
-    <module>mt-web</module>
+    <module>mt-web-modules</module>
     <module>mt-web-single</module>
+    <module>mt-web-gateway</module>
   </modules>
 
   <packaging>pom</packaging>
@@ -90,6 +91,12 @@
         <groupId>org.redisson</groupId>
         <artifactId>redisson-spring-boot-starter</artifactId>
         <version>${redisson-spring-boot-starter.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-webmvc-core</artifactId>
+        <version>${springdoc-openapi-webmvc-core.version}</version>
       </dependency>
 
       <dependency>
@@ -167,12 +174,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-webmvc-core</artifactId>
-      <version>${springdoc-openapi-webmvc-core.version}</version>
     </dependency>
 
     <dependency>
