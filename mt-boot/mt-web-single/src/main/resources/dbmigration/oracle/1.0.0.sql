@@ -81,13 +81,16 @@ create table mt_group (
   id                            number(19) not null,
   tenant_id                     number(19) not null,
   parent_id                     number(19) not null,
+  code                          varchar2(255) not null,
   name                          varchar2(255) not null,
+  type                          varchar2(1) not null,
   description                   varchar2(255),
   version                       number(10) not null,
   last_mod_staff                number(19) not null,
   deleted                       number(1) default 0 not null,
   created_time                  timestamp not null,
   updated_time                  timestamp not null,
+  constraint ck_mt_group_type check ( type in ('1','2','3','4')),
   constraint pk_mt_group primary key (id)
 );
 
@@ -96,6 +99,8 @@ create table mt_group_staff (
   tenant_id                     number(19) not null,
   group_id                      number(19) not null,
   staff_id                      number(19) not null,
+  post_id                       number(19),
+  is_main                       number(1) not null,
   deleted                       number(1) default 0 not null,
   created_time                  timestamp not null,
   constraint pk_mt_group_staff primary key (id)
@@ -192,9 +197,23 @@ create table mt_permission (
   constraint pk_mt_permission primary key (id)
 );
 
+create table mt_post (
+  id                            number(19) not null,
+  tenant_id                     number(19) not null,
+  post                          varchar2(255) not null,
+  sorted                        number(10) not null,
+  version                       number(10) not null,
+  last_mod_staff                number(19) not null,
+  deleted                       number(1) default 0 not null,
+  created_time                  timestamp not null,
+  updated_time                  timestamp not null,
+  constraint pk_mt_post primary key (id)
+);
+
 create table mt_role (
   id                            number(19) not null,
   tenant_id                     number(19) not null,
+  code                          varchar2(255) not null,
   name                          varchar2(255) not null,
   sorted                        number(10) not null,
   description                   clob,
@@ -207,6 +226,7 @@ create table mt_role (
   created_time                  timestamp not null,
   updated_time                  timestamp not null,
   constraint ck_mt_role_status check ( status in ('0','1','2')),
+  constraint uq_mt_role_code unique (code),
   constraint uq_mt_role_name unique (name),
   constraint pk_mt_role primary key (id)
 );
@@ -231,11 +251,14 @@ create table mt_staff (
   mobile                        varchar2(42),
   password                      varchar2(128) not null,
   description                   clob,
+  expire_time                   timestamp,
+  status                        varchar2(1) not null,
   version                       number(10) not null,
   last_mod_staff                number(19) not null,
   deleted                       number(1) default 0 not null,
   created_time                  timestamp not null,
   updated_time                  timestamp not null,
+  constraint ck_mt_staff_status check ( status in ('0','1','2')),
   constraint pk_mt_staff primary key (id)
 );
 
@@ -251,6 +274,7 @@ create table mt_staff_role (
 
 create table mt_tenant (
   id                            number(19) not null,
+  name                          varchar2(255) not null,
   start_time                    timestamp not null,
   end_time                      timestamp not null,
   leases                        number(19) not null,
@@ -265,6 +289,28 @@ create table mt_tenant (
   constraint ck_mt_tenant_ds_type check ( ds_type in ('1','2','128')),
   constraint ck_mt_tenant_status check ( status in ('0','1','2')),
   constraint pk_mt_tenant primary key (id)
+);
+
+create table mt_web_domain (
+  id                            number(19) not null,
+  domain                        varchar2(255) not null,
+  ipc_no                        varchar2(255),
+  owner                         varchar2(255),
+  email                         varchar2(255),
+  register                      varchar2(255),
+  creation_date                 timestamp,
+  expiration_date               timestamp,
+  tenant_id                     number(19) not null,
+  description                   clob,
+  status                        varchar2(1) not null,
+  version                       number(10) not null,
+  last_mod_staff                number(19) not null,
+  deleted                       number(1) default 0 not null,
+  created_time                  timestamp not null,
+  updated_time                  timestamp not null,
+  constraint ck_mt_web_domain_status check ( status in ('0','1','2')),
+  constraint uq_mt_web_domain_domain unique (domain),
+  constraint pk_mt_web_domain primary key (id)
 );
 
 create index ix_mt_staff_account on mt_staff (account);

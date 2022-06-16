@@ -76,7 +76,9 @@ create table mt_group (
   id                            bigint not null,
   tenant_id                     bigint not null,
   parent_id                     bigint not null,
+  code                          varchar(255) not null,
   name                          varchar(255) not null,
+  type                          varchar(1) not null,
   description                   varchar(255),
   version                       integer not null,
   last_mod_staff                bigint not null,
@@ -91,6 +93,8 @@ create table mt_group_staff (
   tenant_id                     bigint not null,
   group_id                      bigint not null,
   staff_id                      bigint not null,
+  post_id                       bigint,
+  is_main                       tinyint(1) not null,
   deleted                       tinyint(1) default 0 not null,
   created_time                  datetime(6) not null,
   constraint pk_mt_group_staff primary key (id)
@@ -183,9 +187,23 @@ create table mt_permission (
   constraint pk_mt_permission primary key (id)
 );
 
+create table mt_post (
+  id                            bigint not null,
+  tenant_id                     bigint not null,
+  post                          varchar(255) not null,
+  sorted                        integer not null,
+  version                       integer not null,
+  last_mod_staff                bigint not null,
+  deleted                       tinyint(1) default 0 not null,
+  created_time                  datetime(6) not null,
+  updated_time                  datetime(6) not null,
+  constraint pk_mt_post primary key (id)
+);
+
 create table mt_role (
   id                            bigint not null,
   tenant_id                     bigint not null,
+  code                          varchar(255) not null,
   name                          varchar(255) not null,
   sorted                        integer not null,
   description                   longtext,
@@ -197,6 +215,7 @@ create table mt_role (
   deleted                       tinyint(1) default 0 not null,
   created_time                  datetime(6) not null,
   updated_time                  datetime(6) not null,
+  constraint uq_mt_role_code unique (code),
   constraint uq_mt_role_name unique (name),
   constraint pk_mt_role primary key (id)
 );
@@ -221,6 +240,8 @@ create table mt_staff (
   mobile                        varchar(42),
   password                      varchar(128) not null,
   description                   longtext,
+  expire_time                   datetime(6),
+  status                        varchar(1) not null,
   version                       integer not null,
   last_mod_staff                bigint not null,
   deleted                       tinyint(1) default 0 not null,
@@ -241,6 +262,7 @@ create table mt_staff_role (
 
 create table mt_tenant (
   id                            bigint not null,
+  name                          varchar(255) not null,
   start_time                    datetime(6) not null,
   end_time                      datetime(6) not null,
   leases                        bigint not null,
@@ -253,6 +275,27 @@ create table mt_tenant (
   created_time                  datetime(6) not null,
   updated_time                  datetime(6) not null,
   constraint pk_mt_tenant primary key (id)
+);
+
+create table mt_web_domain (
+  id                            bigint not null,
+  domain                        varchar(255) not null,
+  ipc_no                        varchar(255),
+  owner                         varchar(255),
+  email                         varchar(255),
+  register                      varchar(255),
+  creation_date                 datetime(6),
+  expiration_date               datetime(6),
+  tenant_id                     bigint not null,
+  description                   longtext,
+  status                        varchar(1) not null,
+  version                       integer not null,
+  last_mod_staff                bigint not null,
+  deleted                       tinyint(1) default 0 not null,
+  created_time                  datetime(6) not null,
+  updated_time                  datetime(6) not null,
+  constraint uq_mt_web_domain_domain unique (domain),
+  constraint pk_mt_web_domain primary key (id)
 );
 
 create index ix_mt_staff_account on mt_staff (account);
