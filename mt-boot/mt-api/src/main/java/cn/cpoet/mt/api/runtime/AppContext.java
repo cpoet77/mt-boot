@@ -1,10 +1,10 @@
 package cn.cpoet.mt.api.runtime;
 
 import cn.cpoet.mt.api.auth.AuthContext;
+import cn.cpoet.mt.api.constant.OSTypes;
 import cn.cpoet.mt.api.tenant.Tenantry;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.lang.Nullable;
 
 /**
  * 应用上下文
@@ -18,6 +18,15 @@ public interface AppContext extends InitializingBean {
      * @return 支持模式
      */
     RunModel getRunModel();
+
+    /**
+     * 获取当前系统的类型
+     *
+     * @return 系统类型
+     */
+    default OSTypes getOsType() {
+        return OSTypes.CURRENT_OS;
+    }
 
     /**
      * 获取当前上下文中的租户信息
