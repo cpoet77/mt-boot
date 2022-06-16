@@ -200,11 +200,6 @@
     <finalName>${project.artifactId}</finalName>
 
     <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-
       <!-- 打包时跳过Test -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
