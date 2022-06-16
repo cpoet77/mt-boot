@@ -1,6 +1,7 @@
 package cn.cpoet.mt.core.auth;
 
 import cn.cpoet.mt.core.auth.TokenUser.TokenUserBuilder;
+import cn.cpoet.mt.core.runtime.ContextTenantry;
 import cn.cpoet.mt.model.domain.Role;
 import cn.cpoet.mt.model.domain.Staff;
 import cn.cpoet.mt.model.domain.query.*;
@@ -28,10 +29,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         staffSubject.setStaffId(staff.getId());
         staffSubject.setAccount(staff.getAccount());
         staffSubject.setStaffName(staff.getStaffName());
-        ContextTenantry tenantInfo = new ContextTenantry();
-        tenantInfo.setTenantId(staff.getTenantId());
-        tenantInfo.setTenantName(null);
-        staffSubject.setTenantInfo(tenantInfo);
+        ContextTenantry tenantry = new ContextTenantry.Builder()
+            .withId(staff.getTenantId())
+            .build();
+        staffSubject.setTenantry(tenantry);
         TokenUserBuilder builder = new TokenUserBuilder()
             .staffSubject(staffSubject)
             .expireTime(staff.getExpireTime())

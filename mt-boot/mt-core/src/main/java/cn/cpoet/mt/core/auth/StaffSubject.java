@@ -2,6 +2,7 @@ package cn.cpoet.mt.core.auth;
 
 import cn.cpoet.mt.api.auth.SubjectTypes;
 import cn.cpoet.mt.api.tenant.Tenantry;
+import cn.cpoet.mt.core.runtime.ContextTenantry;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -32,7 +33,7 @@ public class StaffSubject extends GuestSubject {
     /**
      * 租户信息
      */
-    private ContextTenantry tenantInfo;
+    private ContextTenantry tenantry;
 
     @Override
     public Long getId() {
@@ -51,7 +52,7 @@ public class StaffSubject extends GuestSubject {
 
     @Override
     public Tenantry getTenantry() {
-        return tenantInfo;
+        return tenantry;
     }
 
     @Override

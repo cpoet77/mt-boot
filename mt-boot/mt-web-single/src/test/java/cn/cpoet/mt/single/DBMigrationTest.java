@@ -1,12 +1,13 @@
 package cn.cpoet.mt.single;
 
 import cn.cpoet.mt.db.tenant.TenantDb;
-import cn.cpoet.mt.db.tenant.TenantDbContext;
+import cn.cpoet.mt.model.dao.StaffRoleDao;
 import cn.cpoet.mt.model.domain.StaffRole;
 import cn.cpoet.mt.model.domain.query.QStaffRole;
 import io.ebean.annotation.Platform;
 import io.ebean.dbmigration.DbMigration;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
@@ -21,6 +22,9 @@ import java.io.IOException;
  */
 @SpringBootTest
 public class DBMigrationTest {
+    @Autowired
+    private StaffRoleDao staffRoleDao;
+
     /**
      * 生成DDL-SQL
      *
@@ -37,7 +41,7 @@ public class DBMigrationTest {
 
     @Test
     public void tenantTest() {
-        TenantDbContext instance = TenantDbContext.getInstance();
+//        TenantDbContext instance = TenantDbContext.getInstance();
 //        Database master = instance.getMaster(SystemConst.SYS_TENANT_ID);
 //        Database salve = instance.getSalve(SystemConst.SYS_TENANT_ID);
 
@@ -63,6 +67,10 @@ public class DBMigrationTest {
             .better(QStaffRole.class)
             .id.eq(staffRole.getId())
             .findOne());
+
+        System.out.println("1111" + staffRoleDao.byId(staffRole.getId()));
+
+        staffRoleDao.delete(staffRole);
 
     }
 }

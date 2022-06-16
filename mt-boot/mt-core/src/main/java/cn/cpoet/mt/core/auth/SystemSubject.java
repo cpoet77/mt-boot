@@ -4,6 +4,7 @@ import cn.cpoet.mt.api.auth.Subject;
 import cn.cpoet.mt.api.auth.SubjectTypes;
 import cn.cpoet.mt.api.constant.SystemConst;
 import cn.cpoet.mt.api.tenant.Tenantry;
+import cn.cpoet.mt.core.runtime.ContextTenantry;
 
 /**
  * @author CPoet

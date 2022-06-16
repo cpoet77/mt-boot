@@ -17,6 +17,13 @@ public interface Tenantry {
     Long getId();
 
     /**
+     * 获取租户名称
+     *
+     * @return 租户名称
+     */
+    String getName();
+
+    /**
      * 获取租期开始时间
      *
      * @return 开始时间

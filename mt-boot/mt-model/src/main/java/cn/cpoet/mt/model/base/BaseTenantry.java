@@ -17,6 +17,12 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseTenantry extends BaseModel implements Tenantry {
     /**
+     * 租户名称
+     */
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    /**
      * 开始时间
      */
     @Column(name = "start_time", nullable = false)
