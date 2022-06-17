@@ -17,5 +17,5 @@ public interface StaffFeign {
      * @return hello
      */
     @GetMapping("/hello")
-    public String hello();
+    String hello();
 }
