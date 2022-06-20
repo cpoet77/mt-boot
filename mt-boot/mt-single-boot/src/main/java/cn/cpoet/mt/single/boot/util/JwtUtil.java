@@ -1,5 +1,6 @@
-package cn.cpoet.mt.core.util;
+package cn.cpoet.mt.single.boot.util;
 
+import cn.cpoet.mt.core.util.UUIDUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;

@@ -1,4 +1,4 @@
-package cn.cpoet.mt.core.auth;
+package cn.cpoet.mt.single.boot.auth;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;

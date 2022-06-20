@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: mt-web-gateway
-  profiles:
-    active: @profile.name@

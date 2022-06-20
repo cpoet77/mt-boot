@@ -4,4 +4,4 @@
  *
  * @author CPoet
  */
-package cn.cpoet.mt.single.boot.auto;
+package cn.cpoet.mt.single.boot.auth;

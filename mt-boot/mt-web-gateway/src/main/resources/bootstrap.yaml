@@ -1,0 +1,17 @@
+spring:
+    application:
+        name: mt-web-gateway
+    profiles:
+        active: @profile.name@
+    cloud:
+        nacos:
+            discovery:
+                group: MT-BOOT
+                # 注册中心地址
+                server-addr: @nacos.addr@
+            config:
+                group: ${spring.cloud.nacos.discovery.group}
+                # 配置中心地址
+                server-addr: ${spring.cloud.nacos.discovery.server-addr}
+                # 配置格式
+                file-extension: yaml

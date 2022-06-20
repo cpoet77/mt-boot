@@ -1,7 +1,7 @@
-package cn.cpoet.mt.core.auth;
+package cn.cpoet.mt.single.boot.auth;
 
 import cn.cpoet.mt.core.configuration.auto.AuthenticateProperties;
-import cn.cpoet.mt.core.util.JwtUtil;
+import cn.cpoet.mt.single.boot.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
